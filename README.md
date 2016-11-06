@@ -1,1 +1,1 @@
-echo "hello everyone"
+Js 集合包!
