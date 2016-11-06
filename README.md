@@ -1,1 +1,1 @@
-# some js demos;
+# some demos;
