@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>带滚动提示的链接</title>
+		<style type="text/css">
+		    #show{
+		    	position: absolute;
+		    	left: 10px;
+		    	top: 50px;
+		    	border: 1px solid #f90;
+		    	height: 30px;
+		    	line-height: 30px;
+		    	width: 100px;
+		    }
+		</style>
+	</head>
+	<body>
+		<div id='show'><!-- 要提示的内容 --></div>
+		<a href='#' onmouseout="hidetip()" onmousemove="showtip(this, event, '显示滚动的文字')">带滚动提示的链接</a>
+		<script type="text/javascript">
+		    var show = document.getElementById('show');
+		    function showtip(current, e, text){
+		    	//if (document.readyState == "complete") {
+		    		// 给div 中播放的内容
+		    		show.innerHTML = '<marquee>' + text + '</marquee>';
+		    		// 如果不用css 来控制div 可以直接用以下二条语句控制div
+		    		//show.style.pixelLeft = event.clientX + document.body.scrollLeft + 10;
+		    		//show.style.pixeltop = event.clientY + document.body.scrollTop + 40;
+		    		// 显示提示内容的div
+		    		show.style.visibility = 'visible';
+		    	//}
+		    }
+		    function hidetip(){
+		    	// 隐藏显示的div
+		    	show.style.visibility = 'hidden';
+		    }
+		</script>
+	</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>div移动</title>
+		<style type="text/css">
+		body,ul,li{
+			padding: 0;
+			margin: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		footer{
+			height: 650px;
+			background: #141414;
+			position: relative;
+		}
+		.icon{
+			width: 80px;
+			height: 160px;
+			position: fixed;
+			right: 20px;
+			bottom: 100px;
+			background: pink;
+		}
+		.icon li{			
+			width: 80px;
+			height: 40px;
+			line-height: 40px;
+			color: #8c8c8c;
+			text-align: center;
+			position: relative;
+		}
+		.icon li:hover{
+			color: #ffdb3d;
+			background: #ff4f4f;
+		}
+		.icon li:hover a{
+			display: inline-block;
+			-webkit-animation: posit 1s ease-out;
+			animation:posit 1s ease-out;
+		}
+		@-webkit-keyframes posit{
+			0%{right: 180px;}
+			20%{right: 160px;}
+			40%{right: 140px;}
+			60%{right: 120px;}
+			80%{right: 100px;}
+			100%{right: 80px;}
+		}
+		.icon a{
+			position: absolute;
+			right: 80px;
+			bottom: 0;
+			width: 100px;
+			height: 40px;
+			color: #ff4f4f;
+			background: #ccc;
+			display: none;
+		}
+		.icon a::before{
+			content: '';
+			width: 0;
+			height: 0;
+			border: 15px solid green;
+			border-color: transparent transparent transparent  #ccc;
+			position: absolute;
+			right: -30px;
+			top: 5px;
+		}
+		</style>
+	</head>
+	<body>
+		<footer>
+            <ul class="icon" id='icon'>
+                <li>HTML
+                    <a href="#html">HTML</a>
+                </li>
+                <li>CSS
+                    <a href="#css">CSS</a>
+                </li>
+                <li>PHP
+                	<a href="#php">PHP</a>
+                </li>
+                <li>顶部
+                	<a href="#top">顶部</a>
+                </li>
+            </ul>
+        </footer>
+        <script type="text/javascript">
+            // var icons = document.getElementById('icon').getElementsByTagName('li');
+            // //var a = document.getElementById('icon').getElementsByTagName('a');
+            // //alert(icon.length);
+            // for (var i = 0; i < icons.length; i ++){
+            // 	alert(i);
+            // 	// (function(){
+            // 	// 	icon[i].onmouserover = function(){
+            // 	// 		a[i].style.display = 'block';
+            // 	// 	}
+            // 	// })(i)
+            // 	// icon[i].oncdivck = function(){
+            // 	// 	alert(this);
+            // 	// }
+            // 	// icon[i].onmouserout = function(){
+	           //  // 	alert(this);
+	           //  // }
+            // 	icons[i].onmouserover = function(){
+            // 		alert(this);
+	           //  	this.getElementsByTagName('a')[0].style.display = 'block';
+	           //  }
+	            
+            // }
+        </script>
+
+	</body>
+</html>

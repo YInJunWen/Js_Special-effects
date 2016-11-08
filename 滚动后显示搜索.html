@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上下跳动</title>
+	<style type="text/css">
+	    body,ul,li{
+	    	padding: 0;
+	    	margin: 0;
+	    }
+	    header{
+	    	height: 39px;
+	    	line-height: 39px;
+	    	background: #141414;
+	    	position: fixed;
+	    	width: 100%;
+	    }
+	    ul{
+	    	width: 1000px;
+	    	margin: 0px auto;
+	    	list-style: none;
+	    }
+	    li {
+	    	float: left;
+	    	width: 80px;
+	    	position: relative;
+	    }
+	    a{
+	    	text-decoration: none;
+	    }
+	    span{
+	    	position: absolute;
+	    	left: 40px;
+	    	top:-16px;
+	    	font-size: 10px;
+	    	padding: 3px;
+	    	height: 16px;
+	    	color: red;
+	    }
+	    #content{
+			height: 500px;
+			background: #141414;
+		}
+		footer{
+			height: 350px;
+			background: #141414;
+			position: relative;
+		}
+		.icon{
+			width: 80px;
+			height: 160px;
+			position: fixed;
+			right: 20px;
+			bottom: 100px;
+			background: pink;
+			display: none;
+		}
+		.icon li{			
+			width: 80px;
+			height: 40px;
+			line-height: 40px;
+			color: #8c8c8c;
+			text-align: center;
+			position: relative;
+		}
+		.icon li:hover{
+			color: #ffdb3d;
+			background: #ff4f4f;
+		}
+		.icon li:hover a{
+			display: inline-block;
+			-webkit-animation: posit 1s ease-out;
+			animation:posit 1s ease-out;
+		}
+		@-webkit-keyframes posit{
+			0%{right: 180px;}
+			20%{right: 160px;}
+			40%{right: 140px;}
+			60%{right: 120px;}
+			80%{right: 100px;}
+			100%{right: 80px;}
+		}
+		.icon a{
+			position: absolute;
+			right: 80px;
+			bottom: 0;
+			width: 100px;
+			height: 40px;
+			color: #ff4f4f;
+			background: #ccc;
+			display: none;
+		}
+		.icon a::before{
+			content: '';
+			width: 0;
+			height: 0;
+			border: 15px solid green;
+			border-color: transparent transparent transparent  #ccc;
+			position: absolute;
+			right: -30px;
+			top: 5px;
+		}
+		input{
+			border: none;
+		}
+		.search{
+			margin: 8px 0px;
+			width:450px; 
+			height:28px;
+			line-height: 28px;
+			display:inline-block;
+			border:2px solid #ff3c3c;
+		}
+		.search .icon-search{
+			width: 32px;
+			font-size: 20px;
+			color: #fafafa;
+			text-align: center;
+			cursor: text;
+		}
+		.search input{
+			padding-left: 8px;
+		}
+		#searchBtn{
+			width: 98px;
+			background: #ff3c3c;
+			color: #fff;
+			float: right;
+			border: none;
+			height: 28px;
+			cursor: pointer;
+			outline: none;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<ul id='list'>
+			<li><a href=''>首页</a></li>
+			<li><a href=''>社区</a><span>HOT</span></li>
+			<li><a href=''>博客</a></li>
+			<li><a href=''>论坛</a></li>
+		</ul>
+	</header>
+	<div style="clear:both;"></div>
+	<div style="height:80px; width:1000px;">banner</div>
+	<div class='fl hdNavFl' id='search' style="width:1000px; margin:0 auto;">
+	    <form class="search" action='<?php echo __ROOT__?>/home/goods/all.php#all' method="get">
+	    	<i class='icon-search'></i>
+	    	<input type="text" placeholder='5.1水果世界纪录日' name='search'/>
+	    	<button id='searchBtn'>搜&nbsp;索</button>
+	    </form>
+	</div>
+	<script type="text/javascript">
+	    var list = document.getElementById('list').getElementsByTagName('span');
+	    //alert(list);
+	    for (var i = 0; i < list.length; i ++) {
+	    	if(list[i].innerHTML) {
+	    		var box = list[i];
+	    		var timer = setInterval(function(){
+	    			//console.log(box.offsetTop);
+	    			if (Math.abs(box.offsetTop) == 16) {
+	    				//console.log('调用成功');
+	    				box.style.top = -12 + 'px';
+	    			} else {
+	    				//console.log('调用成功');
+	    				box.style.top = -16 + 'px';
+	    			}
+	    		}, 800);
+	    	}
+	    }
+	</script>
+	<div id='content'></div>
+
+	<footer>
+            <ul class="icon" id='icon'>
+                <li>HTML
+                    <a href="#html">HTML</a>
+                </li>
+                <li>CSS
+                    <a href="#css">CSS</a>
+                </li>
+                <li>PHP
+                	<a href="#php">PHP</a>
+                </li>
+                <li>顶部
+                	<a href="#top">顶部</a>
+                </li>
+            </ul>
+        </footer>
+    <script type="text/javascript">
+        var icon = document.getElementById('icon');
+        window.onscroll = function(){
+        	var top = document.body.scrollTop;
+        	console.log(top);
+        	if (top > 0) {
+        		icon.style.display = 'block';
+        	} else {
+        		icon.style.display = 'none';
+        	} 
+        	var search = document.getElementById('search');
+        	if (top > 40) {
+        		search.style.position = 'fixed';
+        	} else {
+        		search.style.position = 'none';
+        	}
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Index</title>
+    </head>
+    <body>
+        <ul id='box'>
+            <li style='color:black;display:none'>I</li>
+            <li style='color:black;display:none'>L</li>
+            <li style='color:black;display:none'>O</li>
+            <li style='color:black;display:none'>V</li>
+            <li style='color:black;display:none'>E</li>
+            <li style='color:black;display:none'>U</li>
+        </ul>
+        <script>
+            var colors = ['red','yellow','blue','pink','green'];
+            timmer = setInterval('change()',100);
+           
+            var fonts = document.getElementById('box').getElementsByTagName('li');
+            var i = 0;
+            var j = 0;
+            var k = 0;
+            var w = fonts.length
+            
+            var color = document.getElementsByTagName('colors');
+
+            function change(){
+               if(i >=  fonts.length){
+                   if(k > (parseInt(w)-1)){
+                        if(j >  (parseInt(w)-1)){
+                            return;
+                        }else{
+                             fonts[(j)].style.color='red';
+                        }
+                       j ++;
+                    }else{
+                         fonts[(k)].style.color='green';
+                    }
+                    k ++;
+                    
+                }else{
+                    fonts[i].style.display = 'block';
+                }
+                i += 1;
+            }
+           //alert(fonts[(i-k)].innerHTML);
+                   // clearInterval(timmer);
+                    //timmer = null;
+        </script>
+    </body>
+        
+</html>
+

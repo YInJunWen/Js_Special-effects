@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js</title>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+		}
+		#menu{
+			width:120px;
+			border:1px solid #999;
+			background-color:#fff;
+			position:absolute;
+			left:10px;
+			top:10px;
+			box-shadow:3px 3px 3px #ccc;
+			display:none;
+		}
+		#menu li{
+			list-style:none;
+			height:38px;
+			line-height:38px;
+			cursor:pointer;
+			padding:0 20px;
+			
+		}
+	</style>
+</head>
+<body>
+	<h1>鼠标事件---自定义菜单</h1>
+	<hr>
+	
+	<div id="menu">
+		<ul>
+			<li>粘贴</li>
+			<li>复制</li>
+			<li>刷新</li>
+			<li>剪切</li>
+			<li>用迅雷打开</li>
+			<li>审查元素</li>
+		</ul>
+	</div>
+	
+	<script>
+		document.oncontextmenu = function(en){
+			var menu = document.getElementById('menu');
+			//获取event对象
+			var e = en || window.event;		
+			//获取鼠标位置
+			var x = e.clientX;
+			var y = e.clientY;
+			//console.log(x+' : '+y);
+			//定位
+			menu.style.left = x+'px';
+			menu.style.top = y+'px';
+			//显示
+			menu.style.display = "block";
+			
+			return false;
+		}
+		
+		//单击事件
+		document.onclick = function(){
+			document.getElementById('menu').style.display = "none";
+		}
+		
+		//document.oncontextmenu();
+	
+	</script>
+	
+</body>
+</html>

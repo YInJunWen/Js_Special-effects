@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上下跳动</title>
+	<style type="text/css">
+	    body,ul,li{
+	    	padding: 0;
+	    	margin: 0;
+	    }
+	    header{
+	    	height: 39px;
+	    	line-height: 39px;
+	    	background: #141414;
+	    }
+	    ul{
+	    	width: 1000px;
+	    	margin: 0px auto;
+	    	list-style: none;
+	    }
+	    li {
+	    	float: left;
+	    	width: 80px;
+	    	position: relative;
+	    }
+	    a{
+	    	text-decoration: none;
+	    }
+	    span{
+	    	position: absolute;
+	    	left: 40px;
+	    	top:-16px;
+	    	font-size: 10px;
+	    	padding: 3px;
+	    	height: 16px;
+	    	color: red;
+	    }
+	</style>
+</head>
+<body>
+	<header>
+		<ul id='list'>
+			<li><a href=''>首页</a></li>
+			<li><a href=''>社区</a><span>HOT</span></li>
+			<li><a href=''>博客</a></li>
+			<li><a href=''>论坛</a></li>
+		</ul>
+	</header>
+	<script type="text/javascript">
+	    var list = document.getElementById('list').getElementsByTagName('span');
+	    //alert(list);
+	    for (var i = 0; i < list.length; i ++) {
+	    	if(list[i].innerHTML) {
+	    		var box = list[i];
+	    		var timer = setInterval(function(){
+	    			//console.log(box.offsetTop);
+	    			if (Math.abs(box.offsetTop) == 16) {
+	    				//console.log('调用成功');
+	    				box.style.top = -12 + 'px';
+	    			} else {
+	    				//console.log('调用成功');
+	    				box.style.top = -16 + 'px';
+	    			}
+	    		}, 800);
+	    	}
+	    }
+	</script>
+</body>
+</html>

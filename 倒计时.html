@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Javascript 内置对象</title>
+	<style>
+		#iwatch{
+			width:200px;
+			height:60px;
+			line-height:60px;
+			text-align:center;
+			border:2px solid #333;
+			background:#abcdef;
+			color:#333;
+			font-size:30px;
+			font-weight:bold;
+		}
+	</style>
+</head>
+<body>
+	<h1>Date 对象 -- 表</h1>
+	<hr>
+	距离下课还有：
+	<div id="iwatch">
+		
+	</div>
+	<script>
+		var iwatch = document.getElementById('iwatch');
+		
+		//指定倒计时的时间
+		var seconds = 720;
+		
+		run();
+		var timer = setInterval(run, 1000);
+		
+		function run(){
+			//计算小时
+			var h = Math.floor(seconds / 3600);
+			var s = seconds%3600;	//剩下的秒数
+			var m = Math.floor(s / 60);
+			s = s % 60;
+			//处理
+			h = (h < 10) ? '0'+h : h;
+			m = (m < 10) ? '0'+m : m;
+			s = (s < 10) ? '0'+s : s;
+			//拼装字符串
+			var str = h+':'+m+':'+s;
+			//输入div
+			iwatch.innerHTML = str;
+			
+			//如果 seconds <= 0 接受
+			if (seconds <= 0) {
+				clearInterval(timer);
+			}
+			
+			//时间减少
+			seconds --;
+		}
+		
+		
+		
+		
+		
+		
+	</script>
+</body>
+</html>

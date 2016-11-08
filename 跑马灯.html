@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+	<head>
+	    <meta charset='utf-8'>
+		<title>跑马灯</title>
+	</head>
+	<body>
+		<div id='light'>我是跑马灯</div>
+		<script type="text/javascript">
+		    var light = document.getElementById('light');
+		    var str = light.innerHTML;
+		    var interobj = setInterval('relig()', 1000);
+		    function relig(){
+		    	// 获取第一个元素值
+		    	var first = str.charAt(0);
+		    	// 将字符串拆开(取除第一个以外的所有值)
+		    	str = str.substr(1);
+		    	// 将第一个字符添加到字符串后面
+		    	str = str.concat(first);		 
+		    	// 保存
+		    	light.innerHTML = str;
+		    }
+		</script>
+		<div id='array'>数组方式实现跑马灯</div>
+		<script type="text/javascript">
+		    var arrstr = document.getElementById('array');
+		    var array = arrstr.innerHTML;
+		    var inter = setInterval('rearr()', 1000);
+		    // 将字符串转换为数组
+		    var arr = new Array(array.length);
+		    for (var i = 0; i < array.length; i ++){
+		    	arr[i] = array.slice(i, i + 1);
+		    }
+		    function rearr(){
+		    	// 删除第一个元素
+		    	var first = arr.shift();
+		    	// 将第一个元素压入最后
+		    	arr.push(first);
+		    	// 将数组转换为字符串
+		    	arrstr.innerHTML = arr.join('');
+		    }
+		</script>
+	</body>
+</html>

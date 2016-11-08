@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+    <title>JS</title>  
+    <script type="text/javascript">  
+        window.onload = function () {  
+            flag = 0;  
+            obj1 = document.getElementById("slider");  
+            obj2 = document.getElementsByTagName("li");  
+            obj2[0].style.backgroundColor = "#666666";//默认被选中颜色  
+            time = setInterval("run();", 1000);  
+   
+            obj1.onmouseover = function () {  
+                clearInterval(time);  
+                   
+            }  
+            obj1.onmouseout = function () {  
+                time = setInterval("run();", 1000);  
+            }  
+   
+            for (var num = 0; num < obj2.length; num++) {  
+                obj2[num].onmouseover = function () {  
+                    run(this.innerHTML);  
+                    clearInterval(time);  
+                }  
+                obj2[num].onmouseout = function () {  
+                    time = setInterval("run();", 1000);  
+                }  
+            }  
+        }  
+   
+        function run(value) {  
+            if (value != null) {  
+                flag = value - 2;  
+            }  
+            if (flag < obj2.length - 1){
+				flag++; 
+			}else{
+				 flag = 0;  
+			   }
+
+            obj1.style.top = flag * (-350) + "px";  
+            for (var j = 0; j < obj2.length; j++) {  
+                obj2[j].style.backgroundColor = "#ffffff";  
+            }  
+            obj2[flag].style.backgroundColor = "#666666";  
+        }  
+   
+    </script>  
+    <style type="text/css"> 
+        #wrap  
+        {  
+            height: 350px;  
+            width: 600px;  
+            overflow: hidden;  
+            position: relative; 
+			margin:0 auto;
+           
+        } 
+        #wrap ul  
+        {  
+            list-style: none;  
+			margin-top:300px;
+			margin-left:350px;
+			 position: absolute;
+        } 
+        #wrap ul li  
+        {  
+            margin-left:5px; 
+            text-align: center;  
+            line-height: 30px;  
+            font-size: 20px;  
+            height: 30px;  
+            width: 30px;  
+            background-color: #fff;  
+            float:left;  
+            border-radius:12px;
+        } 
+   
+        #slider  
+        {  
+            position: absolute;  
+            top: 0px;  
+            left: 0px;  
+        } 
+        #slider img  
+        {  
+            float: left;  
+           
+        }  
+    </style>  
+</head>  
+<body>  
+    <div id="wrap">  
+        <div id="slider">  
+            <a  href="#"><img src="../imagess/Meinv001.jpg" width=600 height=350></a>  
+            <a  href="#"><img src="../imagess/Meinv002.jpg" width=600 height=350></a>  
+            <a  href="#"><img src="../imagess/Meinv008.jpg" width=600 height=350></a>  
+            <a  href="#"><img src="../imagess/Meinv010.jpg" width=600 height=350></a> 
+            <a  href="#"><img src="../imagess/Meinv012.jpg" width=600 height=350></a> 
+            <a  href="#"><img src="../imagess/Meinv013.jpg" width=600 height=350></a> 
+        </div>
+		<ul>  
+			<li>1</li>  
+			<li>2</li>  
+			<li>3</li>  
+			<li>4</li>  
+			<li>5</li>  
+			<li>6</li>  
+		</ul> 
+    </div>  
+</body>  
+</html>

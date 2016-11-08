@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js</title>
+	<style type="text/css">
+	    #test {
+	    	width: 200px;
+	    	height: 200px;
+	    	border: 1px solid #f90;
+	    	overflow: hidden;
+	    }
+	</style>
+</head>
+<body>
+	<div id='test'>
+		<div>
+			<a id='text' href=''>1文字滚动</a><br/>
+			<a id='text' href=''>2文字滚动</a><br/>
+			<a id='text' href=''>3文字滚动</a><br/>
+			<a id='text' href=''>4文字滚动</a><br/>
+			<a id='text' href=''>5文字滚动</a><br/>
+			<a id='text' href=''>6文字滚动</a><br/>
+			<a id='text' href=''>7文字滚动</a><br/>
+			<a id='text' href=''>8文字滚动</a><br/>
+			<a id='text' href=''>9文字滚动</a><br/>
+			<a id='text' href=''>1文字滚动</a><br/>
+			<a id='text' href=''>2文字滚动</a><br/>
+			<a id='text' href=''>3文字滚动</a><br/>
+			<a id='text' href=''>4文字滚动</a><br/>
+			<a id='text' href=''>5文字滚动</a><br/>
+			<a id='text' href=''>6文字滚动</a><br/>
+			<a id='text' href=''>7文字滚动</a><br/>
+			<a id='text' href=''>8文字滚动</a><br/>
+		</div>
+	</div>
+	<script type="text/javascript">
+	    var test = document.getElementById('test');
+	    function move(){
+	    	if (test.scrollTop <= 0) {
+	    		test.scrollTop += 106;
+	    	}
+	    	test.scrollTop --;
+	    	console.log(test.scrollTop);
+	    }
+	    setInterval(move, 50);
+	</script>
+</body>
+</html>

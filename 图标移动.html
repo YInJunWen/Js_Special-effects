@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>onmousemove</title>
+		<style type="text/css">
+		    .span{
+		    	width: 30px;
+		    	height: 45px;
+		    	position: relative;
+		    	left: 0;
+		    	top: 0;
+		    }
+		    .span::before, .span::after{
+		    	content: '';
+		    	width: 100%;
+		    	height: 100%;
+		    	background: red;
+		    	position: absolute;
+		    	border-radius: 60px 60px 0 0;
+		    	-webkit-transform: rotate(-45deg);
+		    	-ms-transform: rotate(-45deg);
+		    	-o-transform: rotate(-45deg);
+		    }
+		    .span::after{
+		    	left: 12px;
+		    	-webkit-transform: rotate(45deg);
+		    	-ms-transform: rotate(45deg);
+		    	-o-transform: rotate(45deg);
+		    }
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+		    // 将字符串写入span 中
+		    // 定义字符串
+		    var str = '你好, 欢迎来到这里';
+		    for (var i = 0; i < 6; i ++) {
+		    	document.write('<div class="span" id="span' + i +'">');
+		    	//document.write(str[i]);
+		    	document.write('</div>');
+		    }
+		    // 让文字跟随mouse
+		    document.onmousemove = function(e){
+		    	var e = e || window.event; // 获取event 对象
+		    	var x = e.clientX; // 获取mouse x 坐标
+		    	var y = e.clientY; // 获取mouse y 坐标
+		    	// console.log(x, y);
+
+		    	var i = 0; // 初始化
+		    	//alert(obj.length);
+		    	var timer = setInterval(function(){ // 定时调用将每一个字写在mouse 后面
+		    	    	if (i >= str.length) { // 清除定时器
+		    	    		i = 0; 
+		    	    		clearInterval(timer);
+		    	    		return;
+		    	    	}
+		    	    	var obj = document.getElementById("span" + i); // 获取某个span 元素
+		    	    	if (obj.style != null) {
+		    	    		obj.style.top = y + 'px'; // 定义span 的y 坐标
+		    	            obj.style.left = x + 30 + (i * 45) + 'px'; // 定义span 的 x 坐标
+		    	    	}
+		    	        // console.log(obj.style.top, obj.style.left); 
+		    	        i ++;
+		    	    }, 100);
+
+		    	// 将文字写在mouse 后(只有给span 定位)
+		    	//var obj1 = document.getElementsByTagName('span');
+		    	// 跟随mouse
+		    	// for (var i = 0; i < obj1.length; i ++){
+		    	// 	// obj[i].style.top = y + 'px';
+		    	//     // obj[i].style.left = x + 20 + (i * 30) + 'px';
+		    	// }
+		    }
+		</script>
+	</body>
+</html>
